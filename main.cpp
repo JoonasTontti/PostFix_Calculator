@@ -50,7 +50,8 @@ char get_command()
         command = tolower(command);
         if (command == '?' || command == '=' || command == '+' ||
             command == '-' || command == '*' || command == '/' ||
-            command == 'q' || command =='x' || command == 's') 
+            command == 'q' || command =='x' || command == 's' ||
+            command == 'a') 
             waiting = false;
 
 
@@ -204,6 +205,18 @@ Uses: The class Stack.
         break;
     case 's':
         sumAll(numbers);
+        break;
+    case 'a':
+        int size;
+        size = numbers.size();
+        sumAll(numbers);
+        if (size > 1) {
+            numbers.top(p);
+            if (numbers.push(p / size) == overflow) {
+                cout << "Warning: Stack full, lost result" << endl;
+
+            }
+        }
         break;
 
     case 'q':
