@@ -7,7 +7,7 @@
 
 typedef double Stack_entry;
 
-const int maxstack = 100;   //  small value for testing
+const int maxstack = 5;   //  small value for testing
 
 class Stack {
 public:

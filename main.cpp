@@ -13,6 +13,11 @@ void introduction() {
 }
 void instructions() {
 
+    cout << "[?] push to stack   [=] print top" << endl
+        << "[+] [-] [*] [/]   are arithmetic operations" << endl
+        << "[x] changes places of 2 last numbers" << endl
+        << "[s] sums all already given numbers together" << endl
+        << "[Q]uit." << endl;
 }
 
 int main()
@@ -45,20 +50,40 @@ char get_command()
         command = tolower(command);
         if (command == '?' || command == '=' || command == '+' ||
             command == '-' || command == '*' || command == '/' ||
-            command == 'q' ||command =='x') waiting = false;
+            command == 'q' || command =='x' || command == 's') 
+            waiting = false;
 
 
         else {
-            cout << "Please enter a valid command:" << endl
-                << "[?]push to stack   [=]print top" << endl
-                << "[+] [-] [*] [/]   are arithmetic operations" << endl
-                << "[x] changes places of 2 last nnumbers" <<endl
-                << "[Q]uit." << endl;
+            cout << "Please enter a valid command:" << endl;
+            instructions();
         }
     }
     return command;
 }
 
+void sumAll(Stack& numbers) {
+    double a, b;
+    if (numbers.top(a) == underflow)
+        cout << "Stack empty" << endl;
+    else {
+        numbers.pop();
+        if (numbers.top(b) == underflow) {
+            cout << "Stack has just one entry" << endl;
+            numbers.push(a);
+        }
+
+        else {
+            while (!numbers.empty()) {
+                numbers.top(b);
+                a = a + b;
+                numbers.pop();
+            }
+            if (numbers.push(a) == overflow)
+                cout << "Warning: Stack full, lost result" << endl;
+        }
+    }
+}
 
 bool do_command(char command, Stack& numbers)
 /*
@@ -176,8 +201,11 @@ Uses: The class Stack.
                     cout << "Warning: Stack full, lost result" << endl;
             }
         }
-
         break;
+    case 's':
+        sumAll(numbers);
+        break;
+
     case 'q':
         cout << "Calculation finished.\n";
         return false;
