@@ -45,7 +45,7 @@ char get_command()
         command = tolower(command);
         if (command == '?' || command == '=' || command == '+' ||
             command == '-' || command == '*' || command == '/' ||
-            command == 'q') waiting = false;
+            command == 'q' ||command =='x') waiting = false;
 
 
         else {
@@ -75,7 +75,6 @@ Uses: The class Stack.
         cout << "Enter a real number: " << flush;
         cin >> p;
         cin.clear();
-        cout << " " << numbers.size()<<" ";
         cin.ignore(1000, '\n');
 
         if (numbers.push(p) == overflow)
@@ -160,8 +159,24 @@ Uses: The class Stack.
         }
         break;
 
+    case 'x':
+        if (numbers.top(p) == underflow)
+            cout << "Stack empty" << endl;
+        else {
+            numbers.pop();
+            if (numbers.top(q) == underflow) {
+                cout << "Stack has just one entry" << endl;
+                numbers.push(p);
+            }
 
+            else {
+                numbers.pop();
+                if (numbers.push(p) == overflow || numbers.push(q) == overflow)
+                    cout << "Warning: Stack full, lost result" << endl;
+            }
+        }
 
+        break;
     case 'q':
         cout << "Calculation finished.\n";
         return false;
