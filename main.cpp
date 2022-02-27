@@ -75,7 +75,6 @@ Uses: The class Stack.
         cout << "Enter a real number: " << flush;
         cin >> p;
         cin.clear();
-        cout << " " << numbers.size()<<" ";
         cin.ignore(1000, '\n');
 
         if (numbers.push(p) == overflow)
