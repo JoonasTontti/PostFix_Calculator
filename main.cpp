@@ -52,6 +52,7 @@ char get_command()
             cout << "Please enter a valid command:" << endl
                 << "[?]push to stack   [=]print top" << endl
                 << "[+] [-] [*] [/]   are arithmetic operations" << endl
+                << "[x] changes places of 2 last nnumbers" <<endl
                 << "[Q]uit." << endl;
         }
     }
