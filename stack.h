@@ -3,7 +3,6 @@
 
 #include "Utility.h"
 
-// Section 2.2:
 
 typedef double Stack_entry;
 
@@ -21,7 +20,6 @@ public:
 	bool full() const; // If the stack is full, return true; else return false.
 	int size() const; // Return the number of entries in the stack.
 
-	friend Error_code copy_stack3( Stack &dest, Stack &source);
 
 private:
 	int count;
