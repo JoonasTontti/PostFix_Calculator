@@ -250,8 +250,7 @@ Uses: The class Stack.
     case 'q':
         
        // cout << "Calculation finished.\n"; // removed from use for cleaner look in commandless
-        
-        cout << endl;
+       // cout << endl;
         return false;
     }
     return true;
@@ -265,7 +264,10 @@ bool check_number(string& input) {
 }
 
 void introduction() {
-    cout << "This is a postfix calculator." << endl;
+    cout << "This is a postfix calculator." << endl
+        <<"in postfix you give first the numbers that have operation between them and after them you give the operand"<< endl
+        <<"in: 12 32 12 -+ this means 12 + (32 - 12) you can also do it 12 32 - 12 + these are the same calculation sentence"<< endl
+        <<endl;
 }
 
 void instructions() {
@@ -330,6 +332,10 @@ void commandless(Stack& numbers) {
                             runCalc = do_command(command, numbers);
 
                         }
+                        else {
+                            cout << "Please enter a valid command: " <<command <<" is not valid command."<<endl;
+
+                        }
 
                     }
 
@@ -389,6 +395,10 @@ void commandless(Stack& numbers) {
                             command == '_' || command == '%' || command == 'c') {
 
                             runCalc = do_command(command, numbers);
+
+                        }
+                        else {
+                            cout << "Please enter a valid command: " <<command <<" is not valid command."<<endl;
 
                         }
 
